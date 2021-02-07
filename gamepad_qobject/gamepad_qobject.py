@@ -14,3 +14,11 @@ class Gamepad(QtCore.QObject):
             events = get_gamepad()
             for event in events:
                 self.messageSignal.emit(event.ev_type, event.code, event.state)
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtCore.QCoreApplication(sys.argv)
+    gamepad = Gamepad(app)
+    gamepad.loop()
+    sys.exit(app.exec_())
